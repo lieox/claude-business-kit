@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/bots.json)",
+      "Read(**/mcp.json)"
+    ],
+    "ask": [
+      "Bash(git push:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [{ "type": "command", "command": "python \"$HOME/.claude/hooks/block_dangerous.py\"" }]
+      },
+      {
+        "matcher": "Read|Edit|Write",
+        "hooks": [{ "type": "command", "command": "python \"$HOME/.claude/hooks/protect_secrets.py\"" }]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [{ "type": "command", "command": "python \"$HOME/.claude/hooks/session_log.py\"" }]
+      }
+    ]
+  }
+}

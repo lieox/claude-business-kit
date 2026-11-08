@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "sendpulse": {
+      "command": "node",
+      "args": ["C:/claude-business-kit/mcp/sendpulse/dist/index.js"],
+      "env": {
+        "SENDPULSE_ACCOUNTS": "{\"main\":{\"id\":\"YOUR_SENDPULSE_ID\",\"secret\":\"YOUR_SENDPULSE_SECRET\"}}"
+      }
+    }
+  }
+}

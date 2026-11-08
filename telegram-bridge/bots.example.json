@@ -1,0 +1,80 @@
+{
+  "bots": [
+    {
+      "name": "secretary",
+      "token_env": "TG_TOKEN_SECRETARY",
+      "allowed_user_ids": [
+        111111111
+      ],
+      "role_file": "roles/secretary.md",
+      "workspace": "~/business/office",
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Write(./drafts/**)",
+        "WebSearch",
+        "mcp__sendpulse__sendpulse_list_chats",
+        "mcp__sendpulse__sendpulse_get_chat_messages",
+        "mcp__sendpulse__sendpulse_get_contact"
+      ],
+      "disallowed_tools": [
+        "Bash",
+        "mcp__sendpulse__sendpulse_send_message",
+        "mcp__sendpulse__sendpulse_send_campaign",
+        "Agent",
+        "Task"
+      ],
+      "mcp_config": "mcp.json",
+      "max_turns": 15
+    },
+    {
+      "name": "projects",
+      "token_env": "TG_TOKEN_PROJECTS",
+      "allowed_user_ids": [
+        222222222
+      ],
+      "role_file": "roles/project-manager.md",
+      "workspace": "~/business/projects",
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Write",
+        "Edit",
+        "WebSearch"
+      ],
+      "disallowed_tools": [
+        "Bash",
+        "Agent",
+        "Task"
+      ],
+      "max_turns": 20
+    },
+    {
+      "name": "owner",
+      "token_env": "TG_TOKEN_OWNER",
+      "allowed_user_ids": [
+        333333333
+      ],
+      "role_file": "roles/owner.md",
+      "workspace": "~/business",
+      "allowed_tools": [
+        "Read",
+        "Glob",
+        "Grep",
+        "Write",
+        "Edit",
+        "WebSearch",
+        "WebFetch",
+        "mcp__sendpulse"
+      ],
+      "mcp_config": "mcp.json",
+      "max_turns": 25,
+      "disallowed_tools": [
+        "Agent",
+        "Task"
+      ]
+    }
+  ]
+}

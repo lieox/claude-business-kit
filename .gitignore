@@ -1,0 +1,8 @@
+bots.json
+mcp.json
+.env
+.env.*
+state/
+node_modules/
+dist/
+__pycache__/

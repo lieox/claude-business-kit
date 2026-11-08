@@ -1,5 +1,6 @@
 # Registers the bridge as a Windows scheduled task that starts at logon and restarts if it stops.
-# Run once from PowerShell inside the telegram-bridge folder:  .\register-task.ps1
+# Run once from Command Prompt inside the telegram-bridge folder:
+#   powershell -ExecutionPolicy Bypass -File register-task.ps1
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $python = (Get-Command python).Source
 $action = New-ScheduledTaskAction -Execute $python -Argument "`"$here\bridge.py`"" -WorkingDirectory $here

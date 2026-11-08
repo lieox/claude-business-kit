@@ -1,24 +1,22 @@
 # SendPulse MCP
 
-שרת MCP שנותן לקלוד גישה לבוט הווטסאפ ב-SendPulse: שיחות, אנשי קשר, תגיות, פלואים, טמפלייטים ושליחת הודעות.
-
-## התקנה
-```powershell
-cd mcp\sendpulse
-npm install
-npm run build
-```
+משתמשים בשרת הציבורי [lieox/sendpulse-whatsapp-mcp](https://github.com/lieox/sendpulse-whatsapp-mcp): 26 כלים לבוט ווטסאפ ב-SendPulse, עם מצב קריאה בלבד. נבדק ב-Windows ב-CI.
 
 ## מפתחות
-ב-SendPulse: Settings ← API ← מעתיקים ID ו-Secret.
+ב-SendPulse: Settings > API > Client credentials. מעתיקים ID ו-Secret. המפתחות פותחים את כל החשבון, לא להדביק בצ'אט או בצילום מסך.
 
-## חיבור לקלוד
-```powershell
-claude mcp add sendpulse --scope user --env SENDPULSE_ACCOUNTS='{"main":{"id":"ID","secret":"SECRET"}}' -- node C:/path/to/mcp/sendpulse/dist/index.js
+## התקנה, ב-Command Prompt (לא PowerShell)
 ```
-בדיקה: פותחים `claude`, מריצים `/mcp`, ו-sendpulse צריך להופיע מחובר. אחר כך: "תראה לי את הבוטים שלי ב-SendPulse".
+npm install -g github:lieox/sendpulse-whatsapp-mcp
+claude mcp add -e SENDPULSE_CLIENT_ID=your-id -e SENDPULSE_CLIENT_SECRET=your-secret -s user sendpulse cmd /c sendpulse-whatsapp-mcp
+```
+- `-s user` חייב לבוא אחרי כל ה-`-e` ולפני השם.
+- להתחלה בטוחה מוסיפים `-e SENDPULSE_READ_ONLY=1`: קורא הכל, לא שולח כלום.
+- בדיקה: `claude mcp get sendpulse` צריך להחזיר Connected.
+
+## לבוטים של הצוות
+ב-`telegram-bridge/mcp.example.json` הבוטים מקבלים עותק במצב קריאה בלבד.
 
 ## כללים
-- שליחת הודעה וקמפיין עוברות אישור של אדם. בבוטים של הצוות הן חסומות (`disallowed_tools` ב-bots.json).
 - ווטסאפ מחוץ לחלון 24 השעות דורש טמפלייט מאושר.
 - דיוור שיווקי רק למי שנתן הסכמה (חוק הספאם).

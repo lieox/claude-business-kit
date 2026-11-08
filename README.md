@@ -10,7 +10,7 @@
 | `install/windows.md` | התקנה של Git, Node, Python, FFmpeg, Claude Code, Remotion ו-HyperFrames |
 | `claude-config/` | תבנית CLAUDE.md, הגדרות, 3 הוקים ותבנית סוכן |
 | `telegram-bridge/` | בוט טלגרם לכל עובד, כל אחד עם תפקיד והרשאות משלו |
-| `mcp/sendpulse/` | שרת MCP ל-SendPulse (ווטסאפ) |
+| `mcp/sendpulse/` | חיבור ל-SendPulse (ווטסאפ) דרך lieox/sendpulse-whatsapp-mcp |
 
 ## ההוקים
 - `block_dangerous.py`: חוסם מחיקות רקורסיביות, `git push --force`, `git reset --hard` ופירמוט.

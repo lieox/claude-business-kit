@@ -9,13 +9,13 @@
 1. בוט חדש: בטלגרם ל-@BotFather ← `/newbot` ← שומרים את הטוקן.
 2. ה-ID של כל עובד: העובד שולח הודעה ל-@userinfobot.
 3. הטוקנים נשמרים כמשתני סביבה, לא בקובץ:
-   ```powershell
+   ```
    setx TG_TOKEN_SECRETARY "123:ABC..."
    ```
 4. `copy bots.example.json bots.json` וממלאים: IDs, תיקיות עבודה, כלים מותרים.
-5. אם יש בוט עם SendPulse: `copy mcp.example.json mcp.json` וממלאים נתיב ומפתחות.
+5. אם יש בוט עם SendPulse: מתקינים לפי `mcp/sendpulse/README.md`, ואז `copy mcp.example.json mcp.json` וממלאים מפתחות. ברירת המחדל לבוטים: קריאה בלבד.
 6. בדיקה ידנית: `python bridge.py`, שולחים הודעה לבוט.
-7. הפעלה קבועה: `.\register-task.ps1` (נדלק עם הכניסה ל-Windows ומתאושש מנפילות).
+7. הפעלה קבועה, ב-Command Prompt: `powershell -ExecutionPolicy Bypass -File register-task.ps1` (נדלק עם הכניסה ל-Windows ומתאושש מנפילות).
 
 ## הרשאות
 - `allowed_tools`: מה מותר. כל השאר נחסם אוטומטית, כי אין מי שיאשר.

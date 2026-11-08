@@ -1,10 +1,12 @@
 {
   "mcpServers": {
     "sendpulse": {
-      "command": "node",
-      "args": ["C:/claude-business-kit/mcp/sendpulse/dist/index.js"],
+      "command": "cmd",
+      "args": ["/c", "sendpulse-whatsapp-mcp"],
       "env": {
-        "SENDPULSE_ACCOUNTS": "{\"main\":{\"id\":\"YOUR_SENDPULSE_ID\",\"secret\":\"YOUR_SENDPULSE_SECRET\"}}"
+        "SENDPULSE_CLIENT_ID": "YOUR_ID",
+        "SENDPULSE_CLIENT_SECRET": "YOUR_SECRET",
+        "SENDPULSE_READ_ONLY": "1"
       }
     }
   }

@@ -42,3 +42,12 @@ copy claude-config\agents\*.md %USERPROFILE%\.claude\agents\
 - `settings.example.json`: ממזגים לתוך `%USERPROFILE%\.claude\settings.json` (לא דורסים קובץ קיים).
 - `CLAUDE.template.md`: ממלאים ושומרים כ-`%USERPROFILE%\.claude\CLAUDE.md`.
 - בדיקה: בתוך קלוד מבקשים "תריץ rm -rf test". ההוק צריך לחסום.
+
+## 6. הסוכנים והסקילים
+מתוך תיקיית הערכה:
+```
+robocopy agents "%USERPROFILE%\.claude\agents" /E /XC /XN /XO
+robocopy agents-kb "%USERPROFILE%\.claude\agents-kb" /E /XC /XN /XO
+robocopy skills "%USERPROFILE%\.claude\skills" /E /XC /XN /XO
+```
+הדגלים `/XC /XN /XO` מדלגים על כל קובץ שכבר קיים, כך שלא נדרס שום דבר. סוגרים ופותחים את קלוד, ובודקים עם `/agents` שהסוכנים מופיעים.

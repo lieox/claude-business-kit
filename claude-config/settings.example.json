@@ -14,16 +14,39 @@
     "PreToolUse": [
       {
         "matcher": "Bash|PowerShell",
-        "hooks": [{ "type": "command", "command": "python \"$HOME/.claude/hooks/block_dangerous.py\"" }]
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME/.claude/hooks/block_dangerous.py\""
+          }
+        ]
       },
       {
         "matcher": "Read|Edit|Write",
-        "hooks": [{ "type": "command", "command": "python \"$HOME/.claude/hooks/protect_secrets.py\"" }]
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME/.claude/hooks/protect_secrets.py\""
+          }
+        ]
       }
     ],
     "Stop": [
       {
-        "hooks": [{ "type": "command", "command": "python \"$HOME/.claude/hooks/session_log.py\"" }]
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME/.claude/hooks/session_log.py\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME/.claude/hooks/hebrew_reply_guard.py\""
+          }
+        ]
       }
     ]
   }

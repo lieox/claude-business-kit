@@ -29,6 +29,15 @@
             "command": "python \"$HOME/.claude/hooks/protect_secrets.py\""
           }
         ]
+      },
+      {
+        "matcher": "Agent|Task|Workflow",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME/.claude/hooks/agent_guard.py\""
+          }
+        ]
       }
     ],
     "Stop": [
@@ -45,6 +54,27 @@
           {
             "type": "command",
             "command": "python \"$HOME/.claude/hooks/hebrew_reply_guard.py\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME/.claude/hooks/install_log_reminder.py\""
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME/.claude/hooks/session_notes.py\""
           }
         ]
       }

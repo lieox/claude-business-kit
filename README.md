@@ -18,14 +18,28 @@
 | `market-*` (5 סוכנים) | ניתוח שיווקי של אתר: תוכן, המרות, מתחרים, אסטרטגיה וטכני |
 
 ### סקילים
-בתיקייה `skills/`: `/market` עם 13 פקודות משנה, בדיקת טקסט ללקוח שלא יישמע כמו AI, בדיקה של כל תוצר לפני שהוא יוצא ללקוח, ובדיקת חוקיות לפני דיוור. סקילים נוספים שכדאי להתקין: [`docs/recommended-skills.md`](docs/recommended-skills.md).
+בתיקייה `skills/`: `/market` עם 13 פקודות משנה, בדיקת טקסט ללקוח שלא יישמע כמו AI, בדיקה של כל תוצר לפני שהוא יוצא ללקוח, בדיקת חוקיות לפני דיוור, עבודה עם ווטסאפ דרך SendPulse (`sendpulse-whatsapp-ops`), וגיבוי של פלואו או תרחיש לפני שעורכים אותו (`automation-snapshot-backup`). סקילים נוספים שכדאי להתקין: [`docs/recommended-skills.md`](docs/recommended-skills.md).
 
-### הגדרות והוקים
-בתיקייה `claude-config/` יש תבנית CLAUDE.md עם חוקי עבודה, תבנית לבניית סוכן, וארבעה הוקים:
+### הגדרות, הוקים וחוקים
+בתיקייה `claude-config/` יש תבנית CLAUDE.md עם חוקי עבודה, תבנית לבניית סוכן, ושבעה הוקים:
 - `block_dangerous.py` חוסם מחיקה רקורסיבית, `git push --force`, `git reset --hard` ופירמוט.
 - `protect_secrets.py` לא נותן לקלוד לקרוא או לערוך קבצי סודות.
+- `agent_guard.py` שומר על המכסה: סוכן רגיל מותר עד תקרה לסשן, וצי סוכנים רק כשמבקשים במפורש.
+- `install_log_reminder.py` מזכיר לקלוד לרשום ב-INSTALLS.md כל דבר שהוא מתקין.
+- `session_notes.py` מעביר את הערות העבודה (`working.md`) מסשן לסשן.
 - `session_log.py` רושם כל סבב עבודה ל-`~/.claude/activity-log.md`.
 - `hebrew_reply_guard.py` מחזיר את קלוד לעברית כשהוא עונה באנגלית על הודעה בעברית.
+
+ובנוסף:
+- `rules/`: ארבעה קובצי חוקים שקלוד טוען לבד, על אימות לפי רדיוס הנזק, היגיינת זיכרון, איפה שומרים קבצים, ויומן התקנות.
+- `commands/wrap.md`: הפקודה `/wrap` לסוף סשן. היא בודקת שכל מה שנעשה תועד במקום הנכון.
+- `INSTALLS.template.md`: יומן של כל מה שמותקן במחשב.
+- `templates/`: תבנית לפרויקט חדש ו-`.gitignore` לתיקיית העבודה.
+
+### ניהול סביבת העבודה
+- `tools/memory/mem.py`: חיפוש במאגר הזיכרון של קלוד, בדיקת מצב, ופיצול של זיכרון שהתנפח.
+- `tools/git-sync/`: גיבוי אוטומטי לגיטהאב, בבוקר ובערב, עם סריקת סודות לפני כל קומיט.
+- הסקילים `workspace-structure-audit` (קישורים שבורים וסוכנים יתומים), `docs-freshness-audit` (תיעוד שהתיישן) ו-`agentshield` (סריקת אבטחה של ההגדרות).
 
 ### בוט טלגרם לכל עובד
 בתיקייה `telegram-bridge/` יש גשר אחד שמפעיל כמה בוטים. לכל בוט יש תפקיד, תיקיית עבודה והרשאות משלו, למשל מזכירה שרואה את הווטסאפ אבל לא יכולה לשלוח.
@@ -45,9 +59,13 @@
 
 במק, מתוך תיקיית הערכה:
 ```
-mkdir -p ~/.claude/hooks
+mkdir -p ~/.claude/hooks ~/.claude/rules ~/.claude/commands ~/.claude/tools
 cp -Rn agents agents-kb skills ~/.claude/
 cp -n claude-config/hooks/*.py ~/.claude/hooks/
+cp -n claude-config/rules/*.md ~/.claude/rules/
+cp -n claude-config/commands/*.md ~/.claude/commands/
+cp -n tools/memory/mem.py tools/git-sync/git-sync.sh ~/.claude/tools/
+[ -f ~/.claude/INSTALLS.md ] || cp claude-config/INSTALLS.template.md ~/.claude/INSTALLS.md
 ```
 אחר כך ממזגים את `claude-config/settings.example.json` לתוך `~/.claude/settings.json`. במק מחליפים בכל שורת הוק את `python` ב-`python3`. בלי ההחלפה ההוקים נכשלים בשקט, ואף פקודה לא נחסמת.
 

@@ -12,7 +12,8 @@ claude mcp add -e SENDPULSE_CLIENT_ID=your-id -e SENDPULSE_CLIENT_SECRET=your-se
 ```
 - `-s user` חייב לבוא אחרי כל ה-`-e` ולפני השם.
 - להתחלה בטוחה מוסיפים `-e SENDPULSE_READ_ONLY=1`: קורא הכל, לא שולח כלום.
-- בדיקה: `claude mcp get sendpulse` צריך להחזיר Connected.
+- אחרי ההוספה מריצים `cls`, כדי שהמפתחות לא יישארו על המסך.
+- בדיקה: `claude mcp list` (או `/mcp` בתוך Claude Code) צריך להראות את sendpulse עם Connected. לא `claude mcp get`: הוא מדפיס את ה-Client Secret למסך.
 
 ## לבוטים של הצוות
 ב-`telegram-bridge/mcp.example.json` הבוטים מקבלים עותק במצב קריאה בלבד.

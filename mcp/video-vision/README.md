@@ -32,7 +32,7 @@ claude mcp add -s user claude-video-vision cmd /c claude-video-vision
 claude mcp add -s user claude-video-vision -- npx -y claude-video-vision@1.3.2
 ```
 
-**בדיקה:** `claude mcp get claude-video-vision` צריך להחזיר Connected. אחר כך מבקשים מקלוד "תריץ video_setup", והוא בודק מה חסר ומסביר איך להשלים.
+**בדיקה:** `claude mcp list` צריך להראות את claude-video-vision עם Connected. אחר כך מבקשים מקלוד "תריץ video_setup", והוא בודק מה חסר ומסביר איך להשלים.
 
 ## עברית: לנעול את מודל התמלול
 כשמודל ה-Whisper מוגדר `auto`, הכלי בוחר לפי הזיכרון של המחשב. במחשב עם פחות מ-8GB זיכרון הוא בוחר מודל קטן שמעוות עברית, והתמלול יוצא קריא אבל עם מילים שגויות. אין שום הודעת שגיאה, ולכן קל לפספס את זה.

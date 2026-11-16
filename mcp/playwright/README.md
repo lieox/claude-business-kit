@@ -23,7 +23,7 @@ claude mcp add -s user playwright -- npx -y @playwright/mcp@0.0.83 --browser chr
 npx playwright install chromium
 ```
 
-**בדיקה:** `claude mcp get playwright` צריך להחזיר Connected. אחר כך מבקשים מקלוד "תפתח את האתר שלי ותצלם מסך".
+**בדיקה:** `claude mcp list` צריך להראות את playwright עם Connected. אחר כך מבקשים מקלוד "תפתח את האתר שלי ותצלם מסך".
 
 ## דפדפן
 כברירת מחדל השרת משתמש ב-Google Chrome שמותקן במחשב. אם אין Chrome, ב-Windows עובדים עם Edge, שמגיע עם המערכת:

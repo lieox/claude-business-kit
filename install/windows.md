@@ -4,11 +4,12 @@
 
 ## 1. הבסיס
 ```
-winget install --id Git.Git -e          # Git + Git Bash (ההוקים והכלי Bash של קלוד משתמשים בו)
-winget install --id OpenJS.NodeJS.LTS -e # Node: ל-Remotion, HyperFrames ושרתי MCP
-winget install --id Python.Python.3.12 -e # Python: להוקים ולגשר הטלגרם
-winget install --id Gyan.FFmpeg -e       # FFmpeg: לרינדור וידאו
+winget install --id Git.Git -e
+winget install --id OpenJS.NodeJS.LTS -e
+winget install --id Python.Python.3.12 -e
+winget install --id Gyan.FFmpeg -e
 ```
+מה כל אחד: Git, יחד עם Git Bash שההוקים והכלי Bash של קלוד משתמשים בו · Node, ל-Remotion, ל-HyperFrames ולשרתי MCP · Python, להוקים ולגשר הטלגרם · FFmpeg, לרינדור וידאו. מדביקים שורה אחת בכל פעם: ב-Command Prompt סימן `#` אינו הערה, וכל מה שאחריו עובר לפקודה.
 בדיקה: `git --version && node --version && python --version && ffmpeg -version`
 
 ## 2. Claude Code (אם עוד לא מותקן)
@@ -16,7 +17,7 @@ winget install --id Gyan.FFmpeg -e       # FFmpeg: לרינדור וידאו
 curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
 ```
 נוצר `%USERPROFILE%\.local\bin\claude.exe`. בדיקה: `claude --version`.
-⛔ גשר הטלגרם דורש את ההתקנה הזאת (claude.exe), לא התקנה דרך npm.
+חשוב: גשר הטלגרם דורש את ההתקנה הזאת (claude.exe), לא התקנה דרך npm.
 
 ## 3. Remotion (וידאו מקוד React)
 ```
@@ -27,10 +28,11 @@ npx create-video@latest
 
 ## 4. HyperFrames (וידאו מ-HTML)
 ```
-npx hyperframes skills            # מתקין לקלוד את הסקילים של HyperFrames
-npx hyperframes init my-video     # פרויקט ראשון
+npx hyperframes skills
+npx hyperframes init my-video
 cd my-video && npx hyperframes preview
 ```
+השורה הראשונה מתקינה לקלוד את הסקילים של HyperFrames, והשנייה פותחת פרויקט ראשון.
 עדכון סקילים בהמשך: `npx hyperframes skills update` (נבדק בגרסה 0.9.23, 08.11.2026).
 
 ## 5. ההגדרות של הקיט
